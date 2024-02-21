@@ -546,7 +546,7 @@
   <<div class="card">
   <img src="assets/img/product.jpg" alt="Placeholder Image">
   <div class="price">₹1195.30</div>
- <a href="#" class="btn" id="buyButton">Buy Now</a>
+ <button class="btn" onclick="openGooglePay()">Pay with Google Pay</button>
 </div>
     </section>
     <!-- End Team Section -->
@@ -749,12 +749,19 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-document.getElementById("buyButton").addEventListener("click", function() {
-  var price = "1195.30"; 
-  var upiId = "muhmdsharhan@okicici"; 
-  var googlePayIntentUrl = `https://pay.google.com/gp/v/pubtransaction/upi?pa=${encodeURIComponent(upiId)}&pn=Merchant&mc=123456789&tid=1234567890123456&tr=${encodeURIComponent(price)}&tn=Purchase&am=${encodeURIComponent(price)}&cu=INR`;
-  window.location.href = googlePayIntentUrl;
-});
+
+    function openGooglePay() {
+           
+            var upiId = 'muhmdsharhan@okicici'; // Replace with your UPI ID
+            var price = '1195.30'; // Replace with the price
+
+            // Constructing the Google Pay deep link
+            var googlePayLink = 'upi://pay?pa=' + encodeURIComponent(upiId) + '&pn=MerchantName&tn=PaymentDescription&am=' + encodeURIComponent(price);
+
+            // Opening Google Pay
+            window.location.href = googlePayLink;
+        }
+
 </script>
 
 
